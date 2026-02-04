@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Be My Valentine 💖</title>
+
+<style>
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 350px;
+}
+
+h1 {
+    color: #d63384;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#yes {
+    background-color: #ff69b4;
+    color: white;
+    box-shadow: 0 0 10px #ff69b4;
+}
+
+#no {
+    background-color: #555;
+    color: white;
+}
+
+img {
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1 id="question">Will you be my Valentine? 💘</h1>
+
+<div id="imgContainer">
+    <img id="image" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2tiMGtqc3Q3czhhOGg4dDl5bG55NnM3ZHU3MHZyeXpiN251bGc0byZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qJKG2VemiNjO7Fv4Ct/giphy.gif" width="230">
+</div>
+
+<div>
+    <button id="yes" onclick="yesClicked()">YES 💖</button>
+    <button id="no" onclick="noClicked()">NO 😢</button>
+</div>a
+
+<div id="finalMessage" class="hidden">
+    <h2>YAYYYYYY!!! 💕</h2>
+    <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3a2c3MHNreXR4dnQxejViY2VyanJ5a2xtaXNteGI4YTRkdHV1NjAzcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ARUWfZmRfxQer6ErCU/giphy.gif" width="250">
+    <p>You just made me the happiest person ever! 😁❤️</p>
+</div>
+
+</div>
+
+<script>
+let noCount = 0;
+
+const messages = [
+    "Are you sure cutie? 🥺",
+    "Pretty please? 🐱💖",
+    "Don't break my heart 😭",
+    "Think again princess 🥺",
+    "I'll be very sad 😢",
+    "Just click YES already! 🥰",
+    "What if I give you chocolates? 🍫",
+    "I’ll send you cute cat pics forever 🐾",
+    "You're too adorable to say no , just say YES💕",
+    "My heart says you meant YES 😌",
+    "One tiny YES won't hurt 😋",
+    "I’ll be the happiest person ever 🥹",
+    "Don’t be so cruel to me 😭",
+    "Last last chance, promise 😣",
+    "Okay I’m officially begging now 🥺👉👈",
+    "You know you want to click YES 😏💖"
+];
+
+
+const images = [
+    "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+    "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+    "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif",
+    "https://media.giphy.com/media/13CoXDiaCcCoyk/giphy.gif",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2MzZHQxcTd6ZHdja2NhNDQ4eHJhZG9na3pmbWhxb2drY2ZpeW05dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/P53TSsopKicrm/giphy.gif",
+    "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
+    "https://media.giphy.com/media/1JmGiBtqTuehfYxuy9/giphy.gif",
+    "https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHhsMWg0eGNodDY1dzM2b2pqYzhyNThuZjQ4d3Myd3lnZ29vc3I4NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/901mxGLGQN2PyCQpoc/giphy.gif",
+    "https://media.giphy.com/media/12PA1eI8FBqEBa/giphy.gif",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHhsMWg0eGNodDY1dzM2b2pqYzhyNThuZjQ4d3Myd3lnZ29vc3I4NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zl7u48zLVFgLpRwq6f/giphy.gif",
+    "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+    "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif",
+    "https://media.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif",
+    "https://media.giphy.com/media/9Y5BbDSkSTiY8/giphy.gif",
+    "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aDluc3RyMGxnbDR2cTBkYmg5d3ZnemE0bDNwdDkxZ2JkZWxrdGgzMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j0qSbeNFuzjhXKFVSP/giphy.gif"
+];
+
+function noClicked() {
+
+    let yesButton = document.getElementById("yes");
+
+    // Make the index cycle instead of stopping
+    let index = noCount % messages.length;
+
+    document.getElementById("question").innerText = messages[index];
+
+    let container = document.getElementById("imgContainer");
+
+    // Replace image completely to avoid caching
+    container.innerHTML = "";
+
+    let newImg = document.createElement("img");
+    newImg.id = "image";
+    newImg.width = 230;
+
+    // Unique URL every time
+    newImg.src = images[index] + "?t=" + Math.random();
+
+    container.appendChild(newImg);
+
+    noCount++;   // Keep increasing forever
+    console.log(noCount);
+    let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = (currentSize + 6) + "px";
+}
+
+
+
+function yesClicked() {
+
+    document.getElementById("question").classList.add("hidden");
+    document.getElementById("image").classList.add("hidden");
+    document.getElementById("yes").classList.add("hidden");
+    document.getElementById("no").classList.add("hidden");
+
+    document.getElementById("finalMessage").classList.remove("hidden");
+
+    setTimeout(() => {
+        let phone = "919381701839";
+        let text = "I said YES to being your Valentine! 💖";
+        let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+        window.location.href = url;
+    }, 2500);
+}
+
+</script>
+
+</body>
+</html>
